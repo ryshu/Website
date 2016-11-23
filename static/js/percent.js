@@ -13,7 +13,7 @@ window.addEventListener('load', function() {
     function get_percent_date() {
         var now = new Date();
         var percent = new Date(now.getTime() + (24 * 60 * 60 * 1000));
-        percent.setHours(0,0,0,0);
+        percent.setHours(9,40,0,0);
         var diff = new Date(percent.getTime() - now.getTime());
 
         var hours = leftpad(diff.getHours() - 1);
