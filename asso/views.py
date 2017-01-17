@@ -8,7 +8,6 @@ from . import models
 from . import forms
 
 
-@login_required
 def index(request):
     context = {
         'assos': models.Asso.objects.all(),
@@ -16,7 +15,6 @@ def index(request):
     return render(request, 'asso/index.html', context)
 
 
-@login_required
 def details(request, aid):
     asso = get_object_or_404(models.Asso, pk=aid)
     if asso.members_group:

@@ -8,8 +8,8 @@
 {% endblock %}
 
 {% block menu %}
-    {% menu_item 'Liste des associations' 'asso:index' %}
     {% if perms.asso.manage_asso %}
+        {% menu_item 'Liste des associations' 'asso:index' %}
         {% menu_item 'Management des associations' 'asso:managment' %}
         {% menu_item 'Créer une associations' 'asso:create' %}
     {% endif %}
