@@ -16,9 +16,9 @@ window.addEventListener('load', function() {
         percent.setHours(9,40,0,0);
         var diff = new Date(percent.getTime() - now.getTime());
 
-        var hours = leftpad(diff.getHours() - 1);
-        var minutes = leftpad(diff.getMinutes());
-        var seconds = leftpad(diff.getSeconds());
+        var hours = leftpad(diff.getUTCHours());
+        var minutes = leftpad(diff.getUTCMinutes());
+        var seconds = leftpad(diff.getUTCSeconds());
 
         percent_span.innerHTML = hours + ":" + minutes + ":" + seconds;
       }
@@ -27,3 +27,4 @@ window.addEventListener('load', function() {
     get_percent_date();
 
 });
+
