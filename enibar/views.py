@@ -90,7 +90,7 @@ def show_history(request, page):
     things = []
     for note in notes:
         things.extend(HistoryLine.objects.filter(note_id=note.foreign_id).annotate(nick=Value(note.nickname, output_field=CharField())))
-    paginator = Paginator(sorted(things, key=lambda x: x.id), 50)
+    paginator = Paginator(sorted(things, key=lambda x: -x.id), 50)
 
     try:
         history = paginator.page(page)
