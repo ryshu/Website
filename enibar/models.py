@@ -28,6 +28,7 @@ class HistoryLine(models.Model):
     liquid_quantity = models.IntegerField(default=0)
     percentage = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    note_id = models.IntegerField(db_index=True,  null=True, blank=True)
 
     def normalized_product_name(self):
         return self.product.replace('&', '')
