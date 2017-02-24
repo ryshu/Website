@@ -1,4 +1,5 @@
 from .models import Note, HistoryLine
+from django.db.models import Value, CharField
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -7,7 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.exceptions import PermissionDenied
 from django.http import Http404, HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 import datetime
 import os.path
 import json
@@ -81,8 +82,15 @@ request_history = _create_view(HistoryLine)
 @login_required
 def show_history(request, page):
     page = page or 1
-    note = get_object_or_404(Note, mail=request.user.email)
-    paginator = Paginator(HistoryLine.objects.filter(note_id=note.foreign_id).order_by('-id'), 50)
+    notes = Note.objects.filter(mail=request.user.email)
+    print([note.nickname for note in notes])
+    if not notes:
+        raise Http404
+
+    things = []
+    for note in notes:
+        things.extend(HistoryLine.objects.filter(note_id=note.foreign_id).annotate(nick=Value(note.nickname, output_field=CharField())))
+    paginator = Paginator(sorted(things, key=lambda x: x.id), 50)
 
     try:
         history = paginator.page(page)

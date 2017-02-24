@@ -9,12 +9,7 @@ class Note(models.Model):
 
     @classmethod
     def get_note(cls, user):
-        try:
-            return cls.objects.get(mail=user.email)
-        except cls.DoesNotExist:
-            return None
-        except:
-            return None
+        return cls.objects.filter(mail=user.email)
 
 
 class HistoryLine(models.Model):

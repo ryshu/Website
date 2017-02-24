@@ -1,7 +1,7 @@
 from .models import Note
 
 def check_note(request):
-    note = None
+    notes = None
     if request.method in ["POST", "GET"] and request.user.is_active:
-        note = Note.get_note(request.user)
-    return {'user_note': note}
+        notes = Note.get_note(request.user)
+    return {'user_notes': notes}
