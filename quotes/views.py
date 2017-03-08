@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from .forms import QuoteForm, ProfForm
 from .models import Quote, Prof
+from notifications.shortcuts import notify
 
 
 @login_required
@@ -12,8 +13,15 @@ def add_quote(request):
         quote = quote_form.save(commit=False)
         quote.author = request.user
         quote.save()
+        notify(
+            "Une nouvelle citation a été proposée",
+            'quotes:manage_quotes', {},
+            perms=['manage_quote']
+        )
         quote_form = QuoteForm()
     context = {'quote_form': quote_form}
+
+
 
     return render(request, 'quotes/add_quote.html', context)
 
@@ -23,6 +31,11 @@ def add_prof(request):
     if prof_form.is_valid():
         prof_form = prof_form.save(commit=False)
         prof_form.save()
+        notify(
+            "Un nouveau prof a été proposé",
+            'quotes:manage_prof', {},
+            perms=['manage_prof']
+        )
         prof_form = ProfForm()
     context = {'prof_form': prof_form}
 
