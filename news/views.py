@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Count
+from notifications.shortcuts import notify
 from . import forms
 from . import models
 import json
@@ -69,6 +70,11 @@ def comment(request, nid):
             comment.news = n
             comment.user = request.user
             comment.save()
+            notify(
+                "Un commentaire a été posté sur une news",
+                "news:comment", {'nid': n.id},
+                [n.author]
+            )
     else:
         form = forms.CommentForm()
     context['comment_form'] = form
