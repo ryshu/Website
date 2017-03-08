@@ -1,5 +1,5 @@
 from ..forms import EventForm, RecurrentEventForm, RecurrentEventEditForm, FormulaFormSet
-from ..models import Event, Inscription, ExternInscription, Invitation, RecurrentEvent, Formula
+from ..models import Event, Inscription, ExternInscription, Invitation, RecurrentEvent, Formula, ExternLink
 
 from django.conf import settings
 from django.contrib.auth.decorators import permission_required, user_passes_test
@@ -194,4 +194,10 @@ def admin_export_csv(request, eid):
         line = ["", "", r.first_name, r.last_name, r.mail, str(r.user.profile), r.in_date, '1', r.formula, False, formula_price(r.formula) if r.formula else event.price, r.payment_mean]
         writer.writerow(line)
     return response
+
+@permission_required('events.manage_event')
+def admin_delete_extern(request, uuid):
+    link = ExternLink.objects.get(admin_uuid=uuid)
+    link.delete()
+    return redirect(reverse('events:event', kwargs={'eid': link.event.id}))
 

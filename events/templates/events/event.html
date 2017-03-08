@@ -95,7 +95,7 @@
                         <p>
                             <a href="{% url 'events:extern' uuid=link.uuid %}">Lien pour {{ link.name }}</a>
                             ({{ link.nb_inscriptions }} / {{ link.maximum }})
-                            <p><a href="{% url 'events:extern' uuid=link.admin_uuid %}">Administration</a></p>
+                            <p><a href="{% url 'events:extern' uuid=link.admin_uuid %}">Administration</a> <a href="{% url 'events:delete_extern' uuid=link.admin_uuid %}"><i class="fa fa-trash-o red"></i></a></p>
                         </p>
                     </div>
                 </div>

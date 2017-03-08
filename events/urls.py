@@ -5,6 +5,7 @@ urlpatterns = [
     url(r'^(?P<eid>[0-9]+)$', views.event, name='event'),
     url(r'^$', views.index, name='index'),
     url(r'^extern/(?P<uuid>[0-9a-z\-]+)?$', views.event_extern, name='extern'),
+    url(r'^delete_extern/(?P<uuid>[0-9a-z\-]+)?$', views.admin_delete_extern, name='delete_extern'),
 
     url(r'^admin/$', views.admin_index, name='admin_index'),
     url(r'^admin/list/$', views.admin_list_events, name='admin_list_events'),
