@@ -1,4 +1,4 @@
-from ..forms import EventForm, RecurrentEventForm, RecurrentEventEditForm, FormulaFormSet
+from ..forms import EventForm, RecurrentEventForm, RecurrentEventEditForm, FormulaFormSet, ExternLinkForm
 from ..models import Event, Inscription, ExternInscription, Invitation, RecurrentEvent, Formula, ExternLink
 
 from django.conf import settings
@@ -201,3 +201,14 @@ def admin_delete_extern(request, uuid):
     link.delete()
     return redirect(reverse('events:event', kwargs={'eid': link.event.id}))
 
+@permission_required('events.manage_event')
+def admin_edit_extern(request, uuid):
+    link = ExternLink.objects.get(admin_uuid=uuid)
+    if request.method == "POST":
+        form = ExternLinkForm(request.POST, instance=link)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('events:event', kwargs={'eid': link.event.id}))
+    else:
+        form = ExternLinkForm(instance=link)
+    return render(request, 'events/admin/edit_extern_link.html', {'link': link, 'form': form})

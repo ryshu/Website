@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block header %}
+    Modification du lien {{ link.name }} pour l'evenement {{ link.event.name }}
+{% endblock %}
+
+{% block main %}
+    <form action="./{{link.admin_uuid}}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Sauvegarder</button>
+    </form>
+{% endblock %}
