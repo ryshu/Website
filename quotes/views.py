@@ -7,6 +7,7 @@ from .models import Quote, Prof
 @login_required
 def add_quote(request):
     quote_form = QuoteForm(request.POST or None)
+    quote_form.fields['prof'].queryset = Prof.objects.filter(approved=True)
     if quote_form.is_valid():
         quote = quote_form.save(commit=False)
         quote.author = request.user
@@ -16,15 +17,27 @@ def add_quote(request):
 
     return render(request, 'quotes/add_quote.html', context)
 
+@login_required
+def add_prof(request):
+    prof_form = ProfForm(request.POST or None)
+    if prof_form.is_valid():
+        prof_form = prof_form.save(commit=False)
+        prof_form.save()
+        prof_form = ProfForm()
+    context = {'prof_form': prof_form}
+
+    return render(request, 'quotes/add_prof.html', context)
 
 @permission_required('quotes.manage_prof')
 def manage_prof(request):
     prof_form = ProfForm(request.POST or None)
     if prof_form.is_valid():
+        prof_form.approved = True
         prof_form.save()
         prof_form = ProfForm()
-    profs = Prof.objects.all()
-    context = {'prof_form': prof_form, 'profs': profs}
+    profs = Prof.objects.filter(approved=True)
+    profs_to_validate = Prof.objects.filter(approved=False)
+    context = {'prof_form': prof_form, 'profs': profs, 'profs_to_validate': profs_to_validate}
     return render(request, 'quotes/manage_prof.html', context)
 
 
@@ -40,6 +53,13 @@ def manage_quotes(request):
 def del_prof(request, pid):
     prof = get_object_or_404(Prof, id=pid)
     prof.delete()
+    return redirect('quotes:manage_prof')
+
+@permission_required('profs.manage_prof')
+def approve_prof(request, pid):
+    prof = get_object_or_404(Prof, id=pid)
+    prof.approved = True
+    prof.save()
     return redirect('quotes:manage_prof')
 
 

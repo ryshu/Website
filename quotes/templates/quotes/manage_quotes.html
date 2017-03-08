@@ -1,18 +1,11 @@
 {% extends 'core/base.html' %}
-{% load menu_item %}
 
 {% block header %}
     Gestion des citations
 {% endblock %}
 
 {% block menu %}
-    {% menu_item "Ajouter une citation" "quotes:add_quote" %}
-    {% if perms.quotes.manage_prof %}
-        {% menu_item "Gerer les profs" "quotes:manage_prof" %}
-    {% endif %}
-    {% if perms.quotes.manage_quote %}
-        {% menu_item "Gerer les citations" "quotes:manage_quotes" %}
-    {% endif %}
+    {% include 'quotes/menu.html' %}
 {% endblock %}
 
 {% block main %}

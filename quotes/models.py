@@ -5,6 +5,7 @@ import random
 
 class Prof(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    approved = models.BooleanField(default=False)
 
     class Meta:
         permissions = (('manage_prof', 'Can manage profs'),)

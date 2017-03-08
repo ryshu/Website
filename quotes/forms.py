@@ -5,7 +5,7 @@ from .models import Prof, Quote
 class ProfForm(ModelForm):
     class Meta:
         model = Prof
-        fields = '__all__'
+        exclude = ['approved']
 
 
 class QuoteForm(ModelForm):
