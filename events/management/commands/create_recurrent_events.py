@@ -30,15 +30,15 @@ class Command(BaseCommand):
             delta_dates = event.last_created - event.start_time + delta
             e = Event.objects.create(**{field: value for field, value in event.__dict__.items() if field in [field.column for field in Event._meta.fields if field.column not in ['id', 'model']]})
             e.start_time += delta_dates
-            e.start_time.replace(hour=event.start_time.hour)
+            e.start_time = e.start_time.replace(hour=event.start_time.hour)
             event.last_created = e.start_time
             e.end_time += delta_dates
-            e.end_time.replace(hour=event.end_time.hour)
+            e.end_time = e.end_time.replace(hour=event.end_time.hour)
             e.end_inscriptions += delta_dates
-            e.end_inscriptions.replace(hour=event.end_inscriptions.hour)
+            e.end_inscriptions = e.end_inscriptions.replace(hour=event.end_inscriptions.hour)
             if e.invitations_start is not None:
                 e.invitations_start += delta_dates
-                e.invitations_start.replace(hour=event.invitations_start.hour)
+                e.invitations_start = e.invitations_start.replace(hour=event.invitations_start.hour)
             e.save()
 
             event.save()
