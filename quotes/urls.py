@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^add_quote$', views.add_quote, name='add_quote'),
+    url(r'^all_quotes$', views.all_quotes, name='all_quotes'),
     url(r'^add_prof$', views.add_prof, name='add_prof'),
     url(r'^manage_prof$', views.manage_prof, name='manage_prof'),
     url(r'^manage_quotes$', views.manage_quotes, name='manage_quotes'),

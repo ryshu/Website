@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block header %}
+    Toutes les citations
+{% endblock %}
+
+{% block menu %}
+    {% include 'quotes/menu.html' %}
+{% endblock %}
+
+{% block main %}
+    <table>
+    <thead>
+        <tr>
+            <th>Prof</th>
+            <th>Citation</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for quote in quotes %}
+        <tr>
+            <td>{{ quote.prof.name }} </td>
+            <td>{{ quote.text }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

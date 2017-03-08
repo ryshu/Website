@@ -6,5 +6,7 @@
 {% endif %}
 {% if perms.quotes.manage_quote %}
     {% menu_item "Gerer les citations" "quotes:manage_quotes" %}
+{% else %}
+    {% menu_item "Toutes les citations" "quotes:all_quotes" %}
 {% endif %}
 

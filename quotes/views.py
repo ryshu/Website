@@ -25,6 +25,7 @@ def add_quote(request):
 
     return render(request, 'quotes/add_quote.html', context)
 
+
 @login_required
 def add_prof(request):
     prof_form = ProfForm(request.POST or None)
@@ -40,6 +41,13 @@ def add_prof(request):
     context = {'prof_form': prof_form}
 
     return render(request, 'quotes/add_prof.html', context)
+
+
+@login_required
+def all_quotes(request):
+    quotes = Quote.objects.filter(approved=True).select_related('prof')
+    return render(request, 'quotes/all_quotes.html', {"quotes": quotes})
+
 
 @permission_required('quotes.manage_prof')
 def manage_prof(request):
@@ -89,4 +97,5 @@ def approve_quote(request, qid):
     quote.approved = True
     quote.save()
     return redirect('quotes:manage_quotes')
+
 
