@@ -99,6 +99,7 @@ function create_calendar(id){
         monthSpan.innerHTML = full_months[month];
         refresh(calendarDiv, current_date, input);
         toggle(contentDiv);
+        replace_cal(input, contentDiv)
     });
 
     addEvent(document.getElementsByTagName("html")[0], "click", function(event){
