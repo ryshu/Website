@@ -1,0 +1,674 @@
+@font-face {
+  font-family: "Akkurat-Bold";
+  src: url("font/Akkurat-Bold.ttf");
+}
+/* line 18, ../scss/default.scss */
+* {
+  margin: 0;
+}
+
+/* line 22, ../scss/default.scss */
+html {
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+/* line 27, ../scss/default.scss */
+body {
+  line-height: 0 !important;
+  width: 100vw;
+  overflow-y: auto;
+}
+
+/* line 33, ../scss/default.scss */
+.hidden {
+  display: none;
+}
+
+/* line 38, ../scss/default.scss */
+.bg-home {
+  display: block;
+  position: fixed;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+/* line 46, ../scss/default.scss */
+.logo {
+  display: block;
+  position: absolute;
+}
+/* line 50, ../scss/default.scss */
+.logo img {
+  height: 150%;
+  width: 150%;
+}
+
+/* line 57, ../scss/default.scss */
+.ui.large.fixed.menu {
+  background-color: #333333 !important;
+}
+
+/* line 62, ../scss/default.scss */
+.ui.vertical.stripe {
+  padding: 8em 0em;
+}
+/* line 65, ../scss/default.scss */
+.ui.vertical.stripe h3 {
+  font-size: 2em;
+}
+/* line 68, ../scss/default.scss */
+.ui.vertical.stripe .button + h3
+, .ui.vertical.stripe p + h3 {
+  margin-top: 3em;
+}
+/* line 72, ../scss/default.scss */
+.ui.vertical.stripe .floated.image {
+  clear: both;
+}
+/* line 75, ../scss/default.scss */
+.ui.vertical.stripe p {
+  font-size: 1.33em;
+}
+/* line 78, ../scss/default.scss */
+.ui.vertical.stripe .horizontal.divider {
+  margin: 3em 0em;
+}
+
+/* line 84, ../scss/default.scss */
+.masthead.segment {
+  height: 100vh;
+  padding: 1em 0em;
+  background-color: transparent !important;
+}
+/* line 89, ../scss/default.scss */
+.masthead.segment .logo.item img {
+  margin-right: 1em;
+}
+/* line 92, ../scss/default.scss */
+.masthead.segment .ui.menu.secondary {
+  border-color: transparent !important;
+}
+/* line 96, ../scss/default.scss */
+.masthead.segment .ui.text .ui.button {
+  margin-left: 0.5em;
+  background-color: #68b9de;
+  color: #eeeeee;
+}
+/* line 101, ../scss/default.scss */
+.masthead.segment .ui.text .ui.button:hover {
+  color: white;
+}
+/* line 105, ../scss/default.scss */
+.masthead.segment h1.ui.header {
+  margin-top: 3em;
+  margin-bottom: 0em;
+  font-size: 4em;
+  font-family: Akkurat-Bold;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* line 114, ../scss/default.scss */
+.masthead.segment h2 {
+  font-size: 1.7em;
+  font-family: Akkurat-Bold;
+  font-weight: bold;
+}
+
+/* line 122, ../scss/default.scss */
+.ui.introduction {
+  background-color: white;
+  padding-bottom: 100px;
+  padding-top: 50px;
+}
+/* line 127, ../scss/default.scss */
+.ui.introduction h1 {
+  font-size: 4em;
+  text-align: center;
+  padding: 1em;
+  margin-bottom: 50px !important;
+}
+/* line 135, ../scss/default.scss */
+.ui.introduction .number {
+  width: 350px;
+  height: 350px;
+  opacity: 1;
+  margin: auto !important;
+  margin-top: 10px !important;
+  visibility: visible;
+}
+/* line 143, ../scss/default.scss */
+.ui.introduction .number .number_content {
+  height: 100%;
+  background: #ccc;
+  position: relative;
+  overflow: hidden;
+  transition: 0.5s;
+}
+/* line 151, ../scss/default.scss */
+.ui.introduction .number .number_content .number_content_h {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 20%;
+  top: 100%;
+  left: 0;
+}
+/* line 160, ../scss/default.scss */
+.ui.introduction .number .number_content .number_content_h div {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 1.125em;
+  text-transform: uppercase;
+}
+/* line 170, ../scss/default.scss */
+.ui.introduction .number .number_content .number_content_nh {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  transition: 0.5s;
+}
+/* line 181, ../scss/default.scss */
+.ui.introduction .number .number_content .number_content_nh h3 {
+  font-size: 1.875em;
+  color: #fff;
+  text-transform: uppercase;
+  padding-bottom: 0;
+}
+/* line 188, ../scss/default.scss */
+.ui.introduction .number .number_content .number_content_nh h4 {
+  font-size: 1.125em;
+  color: #999;
+  padding: 0 10px;
+}
+/* line 196, ../scss/default.scss */
+.ui.introduction .number .number_content .number_img {
+  position: absolute;
+  z-index: 1;
+  margin-top: -7%;
+  height: auto;
+  border: none;
+  width: 100%;
+  transition: 0.5s;
+}
+/* line 205, ../scss/default.scss */
+.ui.introduction .number .number_content .number_img img {
+  width: 100%;
+  height: 100%;
+}
+/* line 216, ../scss/default.scss */
+.ui.introduction .number:hover .number_content_h {
+  top: 0%;
+  transition: 0.3s;
+}
+/* line 221, ../scss/default.scss */
+.ui.introduction .number:hover .number_content_nh {
+  top: -100%;
+  transition: 0.3s;
+}
+/* line 226, ../scss/default.scss */
+.ui.introduction .number:hover .number_img {
+  margin-top: 0%;
+  transition: 0.5s;
+}
+
+/* line 235, ../scss/default.scss */
+#bigTriangleShadow {
+  background-color: #F1F1EF;
+  margin: 0;
+  display: block;
+  border: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+/* line 242, ../scss/default.scss */
+#bigTriangleShadow #trianglePath1 {
+  fill: white;
+  stroke: white;
+}
+/* line 246, ../scss/default.scss */
+#bigTriangleShadow #trianglePath2 {
+  fill: #555555;
+  stroke: #555555;
+}
+
+/* line 254, ../scss/default.scss */
+.ui.asso {
+  margin: 0 !important;
+  background-color: #F1F1EF !important;
+  overflow: visible;
+  display: block;
+  position: relative;
+}
+/* line 260, ../scss/default.scss */
+.ui.asso h2 {
+  text-transform: uppercase;
+  font-family: Akkurat-Bold;
+  font-weight: bold;
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: visible;
+}
+/* line 269, ../scss/default.scss */
+.ui.asso h2 p {
+  font-size: 1.5em !important;
+  text-transform: uppercase;
+  font-family: Akkurat-Bold;
+  color: #555;
+  font-weight: bold;
+  background-color: #F1F1EF !important;
+  z-index: 1;
+}
+/* line 279, ../scss/default.scss */
+.ui.asso h2:before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+  width: 100%;
+  border-bottom: 3px solid #555;
+}
+/* line 288, ../scss/default.scss */
+.ui.asso h3 {
+  font-size: 1.8em;
+  text-transform: uppercase;
+  font-family: Akkurat-Bold;
+  font-weight: bold;
+}
+/* line 294, ../scss/default.scss */
+.ui.asso p {
+  font-size: 1.4em !important;
+  text-align: justify;
+}
+/* line 298, ../scss/default.scss */
+.ui.asso ul {
+  font-size: 1.3em !important;
+  padding-left: 20px;
+}
+/* line 303, ../scss/default.scss */
+.ui.asso .item .content {
+  padding-left: 4em !important;
+  padding-right: 2em !important;
+}
+/* line 310, ../scss/default.scss */
+.ui.asso .aligned.padded.row .column {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+/* line 313, ../scss/default.scss */
+.ui.asso .aligned.padded.row .column p {
+  text-align: justify;
+  padding: 15px;
+}
+
+/* line 322, ../scss/default.scss */
+.ui.program {
+  background-color: white !important;
+  overflow: visible;
+}
+/* line 325, ../scss/default.scss */
+.ui.program h1 {
+  font-size: 2.5em;
+  padding: 1em;
+  font-weight: bold;
+  font-family: Akkurat-Bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: #777777;
+}
+/* line 335, ../scss/default.scss */
+.ui.program .ui.container {
+  max-width: 780px !important;
+}
+
+/* line 341, ../scss/default.scss */
+.ui.asso:before,
+.ui.asso:after {
+  position: absolute;
+  content: '';
+  pointer-events: none;
+}
+
+/* line 348, ../scss/default.scss */
+.ss-style-doublediagonal {
+  z-index: 1;
+  padding-top: 6em;
+  background: #ffffff;
+  display: block;
+  position: relative;
+}
+
+/* line 356, ../scss/default.scss */
+.ss-style-doublediagonal:before,
+.ss-style-doublediagonal:after {
+  position: absolute;
+  content: '';
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+  pointer-events: none;
+  top: 0;
+  left: -25%;
+  z-index: 4;
+  width: 150%;
+  height: 150px;
+  background: inherit;
+  -webkit-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+/* line 376, ../scss/default.scss */
+.ss-style-doublediagonal:before {
+  height: 100px;
+  background: #555555;
+  -webkit-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+  -webkit-transform-origin: 3% 0;
+  transform-origin: 3% 0;
+}
+
+/* line 386, ../scss/default.scss */
+.ui.news {
+  background-color: white !important;
+  width: 100% !important;
+}
+/* line 390, ../scss/default.scss */
+.ui.news .news_container {
+  width: 100vw;
+  height: 100%;
+  margin-top: 50px;
+  overflow: hidden;
+  background-color: white !important;
+}
+/* line 396, ../scss/default.scss */
+.ui.news .news_container .news {
+  margin: auto;
+}
+/* line 398, ../scss/default.scss */
+.ui.news .news_container .news h3 {
+  margin-bottom: 30px;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: Akkurat-Bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: #777777;
+}
+/* line 407, ../scss/default.scss */
+.ui.news .news_container .news h4 {
+  margin-top: 10px;
+  font-size: 1.4em;
+  padding-left: 5px;
+  font-weight: bold;
+  font-family: Akkurat-Bold;
+  text-transform: uppercase;
+  color: #222222;
+}
+/* line 416, ../scss/default.scss */
+.ui.news .news_container .news p {
+  margin-bottom: 40px;
+  padding: 5px;
+  font-family: Akkurat-Bold;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.5em !important;
+}
+/* line 424, ../scss/default.scss */
+.ui.news .news_container .news .news_divider {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+/* line 428, ../scss/default.scss */
+.ui.news .news_container .news .news_divider .new {
+  margin: 0 auto;
+  width: 280px;
+}
+/* line 431, ../scss/default.scss */
+.ui.news .news_container .news .news_divider .new .new_picture {
+  width: 280px;
+  height: 280px;
+  box-shadow: 0 0 5px rgba(50, 50, 50, 0.8);
+  overflow: hidden;
+}
+/* line 437, ../scss/default.scss */
+.ui.news .news_container .news .news_divider .new .new_picture img {
+  width: 100%;
+  height: auto;
+}
+/* line 441, ../scss/default.scss */
+.ui.news .news_container .news .news_divider .new .new_text p {
+  text-align: justify;
+  font-size: 1em;
+}
+
+/* line 452, ../scss/default.scss */
+.footer.segment {
+  padding: 2em 0em;
+}
+/* line 454, ../scss/default.scss */
+.footer.segment .footer_copyright {
+  text-align: right;
+}
+/* line 457, ../scss/default.scss */
+.footer.segment .footer_link {
+  display: flex !important;
+  justify-content: center !important;
+}
+/* line 462, ../scss/default.scss */
+.footer.segment .footer_credit {
+  text-align: left;
+}
+
+@media screen and (min-width: 1280px) {
+  /* line 468, ../scss/default.scss */
+  .logo {
+    height: 150px;
+    width: 150px;
+    top: 90px;
+    left: 120px;
+  }
+
+  /* line 474, ../scss/default.scss */
+  .bg-home {
+    width: 100vw;
+    height: 100vh;
+    min-height: 600px;
+    top: 0;
+    left: 0;
+  }
+
+  /* line 481, ../scss/default.scss */
+  .ui.asso .item {
+    padding: 40px;
+  }
+
+  /* line 484, ../scss/default.scss */
+  .masthead.segment {
+    min-height: 600px;
+  }
+  /* line 487, ../scss/default.scss */
+  .masthead.segment .ui.text {
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+  }
+
+  /* line 494, ../scss/default.scss */
+  .news {
+    width: 900px;
+  }
+
+  /* line 498, ../scss/default.scss */
+  .min {
+    display: none !important;
+  }
+
+  /* line 501, ../scss/default.scss */
+  .max {
+    display: block;
+  }
+}
+@media screen and (min-width: 850px) and (max-width: 1280px) {
+  /* line 507, ../scss/default.scss */
+  .logo {
+    height: 150px;
+    width: 150px;
+    top: 90px;
+    left: 120px;
+  }
+
+  /* line 513, ../scss/default.scss */
+  .bg-home {
+    width: 200%;
+    height: 100vh;
+    min-height: 600px;
+    top: 0;
+    left: -50%;
+  }
+
+  /* line 520, ../scss/default.scss */
+  .masthead.segment {
+    min-height: 600px;
+  }
+  /* line 523, ../scss/default.scss */
+  .masthead.segment .ui.text {
+    display: block;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+  }
+
+  /* line 530, ../scss/default.scss */
+  .ui.asso .item {
+    padding: 40px;
+  }
+
+  /* line 533, ../scss/default.scss */
+  .news {
+    width: 800px;
+  }
+
+  /* line 536, ../scss/default.scss */
+  .min {
+    display: none !important;
+  }
+
+  /* line 539, ../scss/default.scss */
+  .max {
+    display: block;
+  }
+}
+@media screen and (min-width: 450px) and (max-width: 850px) {
+  /* line 545, ../scss/default.scss */
+  .logo {
+    height: 100px;
+    width: 100px;
+    top: 50px;
+    left: 50px;
+  }
+
+  /* line 551, ../scss/default.scss */
+  .bg-home {
+    width: 200%;
+    height: 100vh;
+    top: 0;
+    left: -50%;
+  }
+
+  /* line 557, ../scss/default.scss */
+  .masthead.segment {
+    min-height: 500px;
+  }
+
+  /* line 560, ../scss/default.scss */
+  .news {
+    width: 420px;
+  }
+
+  /* line 563, ../scss/default.scss */
+  .ui.asso .item {
+    padding: 40px;
+  }
+
+  /* line 566, ../scss/default.scss */
+  .login-btn {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 50px;
+    right: 50px;
+  }
+
+  /* line 573, ../scss/default.scss */
+  .min {
+    display: block;
+  }
+
+  /* line 576, ../scss/default.scss */
+  .max {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  /* line 582, ../scss/default.scss */
+  .logo {
+    height: 50px;
+    width: 50px;
+    top: 30px;
+    left: 50px;
+  }
+
+  /* line 588, ../scss/default.scss */
+  .bg-home {
+    width: 200%;
+    height: 100vh;
+    top: 0;
+    left: -50%;
+  }
+
+  /* line 595, ../scss/default.scss */
+  .masthead.segment {
+    min-height: 500px;
+  }
+
+  /* line 598, ../scss/default.scss */
+  .login-btn {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    right: 50px;
+  }
+
+  /* line 605, ../scss/default.scss */
+  .news {
+    width: 300px;
+  }
+
+  /* line 609, ../scss/default.scss */
+  .min {
+    display: block;
+  }
+
+  /* line 612, ../scss/default.scss */
+  .max {
+    display: none !important;
+  }
+}

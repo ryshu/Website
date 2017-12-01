@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    url('^', include('news.urls', namespace="news")),
+    url('^', include('homepage.urls', namespace="homepage")),
+    url('^news/', include('news.urls', namespace="news")),
     url('^settings/', include('core.urls', namespace="core")),
     url('^accounts/', include('accounts.urls', namespace="accounts")),
     url('^accounts/password_reset/$', auth_views.password_reset, {'template_name': 'accounts/password_reset.html'}, name='password_reset'),
