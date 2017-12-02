@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'events',
     'webmail',
     'bde',
+    'homepage',
     'carshare',
     'news',
     'shop',
