@@ -2,6 +2,7 @@
 - A working mysql setup
 - A working redis setup
 - python3.5
+- nodejs
 
 # Installation
 ## Database
@@ -22,7 +23,17 @@ pip install -r requirements.txt
 
 ## Dependency
 ```
-yarn install
+npm install
+```
+During the installation process, npm ask you some informations to create the 'semantic.json' file
+Choose express install and define installation path for semantic-ui to :
+```
+static/semantic/
+```
+Then, build the package by executing :
+```
+cd static/semantic/
+gulp build
 ```
 
 ## Migrations
