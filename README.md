@@ -20,6 +20,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Dependency
+```
+yarn install
+```
+
 ## Migrations
 ```
 ./manage.py migrate
