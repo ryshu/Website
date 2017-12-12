@@ -1570,9 +1570,9 @@ table:not(.rd-days) {
     color: #888;
     text-align: right; }
   #quote quote::before {
-    content: "« "; }
+    content: "┬½ "; }
   #quote quote::after {
-    content: " »"; }
+    content: " ┬╗"; }
 
 .asso img {
   width: 100px;
@@ -1589,13 +1589,5 @@ table:not(.rd-days) {
 
 .asso_member img {
   width: 100px; }
-
-#percent {
-  color: white;
-  text-align: center;
-  margin: 1em;
-  padding-top: 2em;
-  padding-bottom: 1em;
-  border-top: 1px solid #222; }
 
 /*# sourceMappingURL=base.css.map */

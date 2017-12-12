@@ -1,0 +1,540 @@
+$bgc-menu : rgba(51 , 51 , 51 , 1)
+$bgc-intro : white
+$bgc-asso : #F1F1EF 
+$bgc-program : white 
+$bgc-news : white 
+
+@font-face
+	font-family: "Akkurat-Bold"
+	src: url('../contrib/Akkurat_bold/Akkurat-Bold.ttf')
+	font-weight: normal
+	font-style: normal
+
+@mixin vendor-prefix($name, $value)
+	@each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '')
+		#{$vendor}#{$name}: #{$value}
+
+@mixin display_flex()
+	@each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '')
+		display: #{$vendor}flex	
+
+*
+	margin: 0
+
+
+html
+	overflow-y: auto
+	overflow-x: auto
+
+
+body
+	line-height: 0!important
+	width: 100vw
+	overflow-y: auto
+
+
+.hidden
+	display: none
+
+
+.bg-home
+	display: block
+	position: fixed
+	z-index: -1
+	opacity: 0.8
+
+.logo
+	display: block
+	position: absolute
+	
+	img
+		height: 150%
+		width: 150%
+	
+.ui.large.fixed.menu
+	background-color: $bgc-menu!important
+
+.ui.vertical.stripe 
+	padding: 8em 0em
+
+	h3
+		font-size: 2em
+
+	.button + h3 ,p + h3
+		margin-top: 3em
+
+	.floated.image 
+		clear: both
+
+	p
+		font-size: 1.33em
+
+	.horizontal.divider
+		margin: 3em 0em
+
+.masthead.segment
+	height: 100vh
+	padding: 1em 0em
+	background-color: transparent!important
+
+	.logo.item img
+		margin-right: 1em
+
+	.ui.menu.secondary
+		border-color:transparent!important
+
+	.ui.text .ui.button
+		margin-left: 0.5em
+		background-color: rgba(104 , 185 , 222 , 1)
+		color : gray
+
+	.ui.text .ui.button:hover
+		color:white
+
+	h1.ui.header
+		margin-top: 3em
+		margin-bottom: 0em
+		font-size: 4em
+		font-family: Akkurat-Bold
+		text-transform: uppercase
+		font-weight: bold
+
+	h2
+		font-size: 1.7em
+		font-family: Akkurat-Bold
+		font-weight: bold
+
+.ui.introduction
+	background-color: $bgc-intro
+	padding-bottom: 100px
+	padding-top: 50px
+
+	h1
+		font-size: 4em
+		text-align: center
+		padding: 1em
+		margin-bottom: 50px!important
+
+	.number
+		width: 350px
+		height : 350px
+		opacity: 1
+		margin:	auto!important
+		margin-top: 10px!important
+		visibility: visible
+
+		.number_content
+			height: 100%
+			background: #ccc
+			position: relative
+			overflow: hidden
+			transition: 0.5s
+
+			.number_content_h
+				background-color: rgba(0,0,0,0.7)
+				position: absolute
+				z-index: 3
+				width: 100%
+				height: 20%
+				top: 100%
+				left: 0
+
+				div
+					width: 100%
+					text-align: center
+					color: #fff
+					font-size: 1.125em
+					text-transform: uppercase
+
+			.number_content_nh
+				background-color: rgba(0,0,0,0.7)
+				position: absolute
+				z-index: 3
+				width: 100%
+				height: 100%
+				top: 0
+				left: 0
+				text-align: center
+				transition: 0.5s
+
+				h3
+					font-size: 1.875em
+					color: #fff
+					text-transform: uppercase
+					padding-bottom: 0
+				h4
+					font-size: 1.125em
+					color: #999
+					padding: 0 10px
+
+			.number_img
+				position: absolute
+				z-index: 1
+				margin-top: -7%
+				height: auto
+				border: none
+				width: 100%
+				transition: 0.5s
+				img
+					width: 100%
+					height: 100%
+
+	.number:hover
+		.number_content_h
+			top : 0%
+			transition: 0.3s
+
+		.number_content_nh
+			top : -100%
+			transition: 0.3s
+
+		.number_img
+			margin-top: 0%
+			transition: 0.5s
+
+#bigTriangleShadow
+	background-color: $bgc-asso
+	margin: 0
+	display: block
+	border: 0
+	overflow: hidden
+	box-sizing : border-box
+
+	#trianglePath1
+		fill : $bgc-intro
+		stroke : $bgc-intro
+
+	#trianglePath2
+		fill: #555555
+		stroke : #555555
+
+.ui.asso
+	margin: 0!important
+	background-color: $bgc-asso!important
+	overflow: visible
+	display: block
+	position: relative
+	h2
+		text-transform: uppercase
+		font-family: Akkurat-Bold
+		font-weight: bold
+		display: block
+		position: relative
+		z-index: 1
+		width: 100%
+		overflow: visible
+
+		p
+			font-size: 1.5em!important
+			text-transform: uppercase
+			font-family: Akkurat-Bold
+			color : #555
+			font-weight: bold
+			background-color: #F1F1EF!important
+			z-index: 1
+
+	h2:before
+		content : ""
+		display: block
+		position: absolute
+		bottom: 0
+		z-index: 0
+		width: 100%
+		border-bottom: 3px solid #555
+
+	h3
+		font-size: 1.8em
+		text-transform: uppercase
+		font-family: Akkurat-Bold
+		font-weight: bold
+
+	p
+		font-size: 1.4em!important
+		text-align: justify
+
+	ul
+		font-size: 1.3em!important
+		padding-left: 20px
+
+	.item
+		.content
+			padding-left: 4em!important
+			padding-right: 2em!important
+
+	.aligned.padded.row
+		.column
+			padding-left: 100px
+			padding-right: 100px
+
+			p
+				text-align: justify
+				padding: 15px
+
+.ui.program
+	background-color: $bgc-program!important
+	overflow: visible
+
+	h1
+		font-size: 2.5em
+		padding: 1em
+		font-weight: bold
+		font-family: Akkurat-Bold
+		text-transform: uppercase
+		text-align: center
+		color: #777777
+
+	.ui.container
+		max-width: 780px!important
+
+.ui.asso:before,.ui.asso:after 
+	position: absolute
+	content: ''
+	pointer-events: none
+
+.ss-style-doublediagonal 
+	z-index: 1
+	padding-top: 6em
+	background: #ffffff
+	display: block
+	position: relative
+
+.ss-style-doublediagonal:before, .ss-style-doublediagonal:after
+	position: absolute
+	content: ''
+	box-sizing: border-box
+	color: #fff
+	text-align: center
+	pointer-events: none
+	top: 0
+	left: -25%
+	z-index: 4
+	width: 150%
+	height: 150px
+	background: inherit
+	-webkit-transform : rotate(-2deg)
+	transform : rotate(-2deg)
+	-webkit-transform : 0 0 
+	transform : 0 0
+	
+.ss-style-doublediagonal:before 
+	height: 100px
+	background: #555555
+	-webkit-transform : rotate(-3deg)
+	transform : rotate(-3deg)
+	-webkit-transform : 3% 0 
+	transform : 3%  0
+	
+.ui.news
+	background-color: $bgc-news!important
+	width: 100%!important
+
+	.news_container
+		width: 100vw
+		height: 100%
+		margin-top: 50px
+		overflow: hidden
+		background-color: $bgc-news!important
+
+		.news
+			margin: auto
+			
+			h3
+				margin-bottom: 30px
+				font-size: 1.5em
+				font-weight: bold
+				font-family: Akkurat-Bold
+				text-transform: uppercase
+				text-align: center
+				color: #777777
+			
+			h4
+				margin-top: 10px
+				font-size: 1.4em
+				padding-left: 5px
+				font-weight: bold
+				font-family: Akkurat-Bold
+				text-transform: uppercase
+				color: #222222
+			
+			p
+				margin-bottom: 40px
+				padding : 5px
+				font-family: Akkurat-Bold
+				text-align: center
+				font-size: 1.2em
+				line-height: 1.5em!important
+
+			.news_divider
+				@include display-flex()
+				@include vendor-prefix(justify-content , space-between )
+				@include vendor-prefix(flex-wrap , wrap)
+
+				.new
+					margin: 0 auto
+					width: 280px
+
+					.new_picture
+						width: 280px
+						height: 280px
+						box-shadow: 0 0 5px rgba( 50 , 50 , 50 , 0.8)
+						overflow: hidden
+
+					.new_picture img
+						width: 100%
+						height: auto
+					
+					.new_text p
+						text-align: justify
+						font-size: 1em
+					
+.footer.segment 
+	padding: 2em 0em
+	
+	.footer_copyright
+		text-align: right
+	
+	.footer_link
+		display: flex!important
+		justify-content: center!important
+
+	.footer_credit
+		text-align: left
+
+@media screen and (min-width : 1280px)
+	.logo
+		height: 150px
+		width: 150px
+		top: 90px
+		left: 120px
+
+	.bg-home
+		width: 100vw
+		height: 100vh
+		min-height: 600px
+		top: 0
+		left: 0
+
+	.ui.asso .item
+		padding: 40px
+	
+	.masthead.segment
+		min-height: 600px
+
+		.ui.text
+		display: block
+		position: absolute
+		top: 20%
+		left: 30%
+		
+	.news
+		width: 900px
+
+	.min
+		display: none!important
+
+	.max
+		display: block
+
+@media screen and (min-width : 850px) and (max-width:1280px)
+	.logo
+		height: 150px
+		width: 150px
+		top: 90px
+		left: 120px
+	
+	.bg-home
+		width: 200%
+		height: 100vh
+		min-height: 600px
+		top: 0
+		left: -50%
+
+	.masthead.segment
+		min-height: 600px
+
+		.ui.text
+		display: block
+		position: absolute
+		top: 15%
+		left: 15%
+
+	.ui.asso .item
+		padding: 40px
+	
+	.news
+		width: 800px
+	
+	.min
+		display: none!important
+	
+	.max
+		display: block
+
+@media screen and (min-width : 450px) and (max-width:850px)
+
+	.logo
+		height: 100px
+		width: 100px
+		top: 50px
+		left: 50px
+
+	.bg-home
+		width: 200%
+		height: 100vh
+		top: 0
+		left: -50%
+
+	.masthead.segment
+		min-height: 500px
+	
+	.news
+		width: 420px
+
+	.ui.asso .item
+		padding: 40px
+
+	.login-btn
+		display: block
+		position: absolute
+		z-index: 1
+		top: 50px
+		right: 50px
+
+	.min
+		display: block
+
+	.max
+		display: none!important
+
+@media screen and (max-width:450px)
+	.logo
+		height: 50px
+		width: 50px
+		top: 30px
+		left: 50px
+	
+	.bg-home
+		width: 200%
+		height: 100vh
+		top: 0
+		left: -50%
+	
+	.masthead.segment
+		min-height: 500px
+	
+	.login-btn
+		display: block
+		position: absolute
+		z-index: 1
+		top: 30px
+		right: 50px
+	
+	.news
+		width: 300px
+	
+	.min
+		display: block
+	
+	.max
+		display: none!important
+	
