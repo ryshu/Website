@@ -1,4 +1,5 @@
 {% load static %}
+{% load markdown %}
 
 <!DOCTYPE html>
 <html>
@@ -155,140 +156,54 @@
 		<path id="trianglePath2" d="M50 100 L100 40 L100 0 Z" />
 	</svg>
 
-	<!-- Asso section -->
-	<section class="ui vertical quote asso ">
-		<div class="ui container">
-			<div class="ui vertical stripe segment">
-				<div class="ui relaxed items">
-					<div class="item">
-						<h2><p>Les associations</p></h2>
-					</div>
-					<div class="item">
-						<div class="image medium ui">
-							<img src="https://img4.hostingpics.net/pics/834990bde.png" alt="" \>
+	{% if assos %}
+		<!-- Asso section -->
+		<section class="ui vertical quote asso ">
+			<div class="ui container">
+				<div class="ui vertical stripe segment">
+					<div class="ui relaxed items">
+						<div class="item">
+							<h2><p>Les associations</p></h2>
 						</div>
-						<div class="content">
-							<h3>Le BDE</h3>
-							<div class="meta">
-								<span>Bureau des étudiants</span>
+						{% for asso in assos %}
+							<div class="item">
+								{% if asso.picture %}
+									<div class="image medium ui">
+										<img src="{{ asso.picture.url }}" alt="{{ asso }}">
+									</div>
+								{% endif %}
+								<div class="content">
+									<h3><a href="{% url 'asso:details' aid=asso.pk %}">{{asso}}</a></h3>
+									<div class="description">
+										{% if asso.description %}
+											<p>{{ asso.description|markdown }}</p>
+										{% else %}
+											<p> L'association n'a pas rédigé de description</p>
+										{% endif %}
+									</div>
+									<div class="extra">
+										{% if asso.mail %}
+											<a href="mailto:{{ asso.mail }}" class="ui label"><i class="icon mail"></i>{{ asso.mail}}</a>
+										{% endif %}
+										{% if asso.site %}
+											<a href="{{ asso.site }}" class="ui label"><i class="icon world">{{ asso.site }}</i> </a>
+										{% endif %}
+									</div>
+								</div>
 							</div>
-							<div class="description">
-								<p>Le BDE est l'association centrale de l'ENIB.</p>
-								<p>Elle est présente pour l'ensemble des étudiants, de l'intégration à la mise à disposition et l'entretien du foyer et du matériel qui s'y trouve en passant par les apéros, soirées à thème et autres joyeusetés.</p>
-								<p class=\"max\">Nous somme également là pour faire le lien entre les étudiants et l'administration, vous proposez un tutorat ou encore vous permettre de vous amuser avec les autres écoles brestoises !</p>
-							</div>
-							<div class="extra">
-								<a href="mailto:bde@enib.fr" class="ui label">
-									<i class="icon mail"></i>bde@enib.fr
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="ui medium image min">
-							<img src="https://img4.hostingpics.net/pics/710657bds.jpg" alt="" \>
-						</div>
-						<div class="content">
-							<h3>Le BDS</h3>
-							<div class="meta">
-								<span>Bureau des sports</span>
-							</div>
-							<div class="description">
-								<p>Le BDE est l'association centrale de l'ENIB.</p>
-								<p>Elle est présente pour l'ensemble des étudiants, de l'intégration à la mise à disposition et l'entretien du foyer et du matériel qui s'y trouve en passant par les apéros, soirées à thème et autres joyeusetés.</p>
-								<p class=\"max\">Nous somme également là pour faire le lien entre les étudiants et l'administration, vous proposez un tutorat ou encore vous permettre de vous amuser avec les autres écoles brestoises !</p>
-							</div>
-							<div class="extra">
-								<a href="mailto:bds@enib.fr" class="ui label">
-									<i class="icon mail"></i>bds@enib.fr
-								</a>
-							</div>
-						</div>
-						<div class="ui medium image max">
-							<img src="https://img4.hostingpics.net/pics/710657bds.jpg" alt="" \>
-						</div>
-					</div>
-					<div class="item">
-						<div class="image medium ui">
-							<img src="https://img4.hostingpics.net/pics/811608cafet.jpg" alt="" \>
-						</div>
-						<div class="content">
-							<h3>Caféteria</h3>
-							<div class="description">
-								<p>La cafétéria ENIB est située dans le foyer.</p>
-								<p>Elle vous propose à manger :</p>
-								<ul class=\"ui list\">
-									<li>Des barres chocolatées</li>
-									<li>Des friandises</li>
-									<li>Des pommes</li>
-									<li>Des sandwitchs (Les Lundi, Mardi et Jeudi)</li>
-									<li>Des barres glacées ( quand il fait chaud )</li>
-								</ul>
-								<p>Mais aussi à boire :</p>
-								<ul class=\"ui list\">
-									<li>Des sodas</li>
-									<li>Des jus de fruit</li>
-									<li>Des bières pressions et bouteilles ( Les Mercredi soir )</li>
-								</ul>
-							</div>
-							<div class="extra">
-								<a href="mailto:cafeteria@enib.fr" class="ui label">
-									<i class="icon mail"></i>cafeteria@enib.fr
-								</a>
-								<a class="ui label" href="https://www.facebook.com/Enib.bar/?ref=br_rs" target="_blank"><i class="icon facebook"></i> Enibar</a>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="content">
-							<h3>Horizon Ingénieur</h3>
-							<div class="meta">
-								<span>La junior de l'enib</span>
-							</div>
-							<div class="description">
-								<p>L'association Horizon Ingénieur est la Junior de l'ENIB.</p>
-								<p>Nous mettons en contact les entreprises et les étudiants afin que ceux-ci réalisent des projets rémunérés.</p>
-								<p class=\"max\">Nous effectuons les démarches administratives afin que l'étudiant n'ait pas à s'en occuper et nous nous engageons à lui fournir un suivit de projet et une aide en cas de besoin.</p>
-								<p class=\"max\">Nous sommes également garants de la qualité des projets rendus aux entreprises.</p>
-							</div>
-							<div class="extra">
-								<a href="mailto:horizon.ingenieur@enib.fr" class="ui label">
-									<i class="icon mail"></i>horizon.ingenieur@enib.fr
-								</a>
-								<a class="ui label" href="http://horizon-ingenieur.fr/" target="_blank"><i class="icon world"></i>horizon-ingenieur.fr</a>
-							</div>
-						</div>
-						<div class="image medium ui">
-							<img src="https://img4.hostingpics.net/pics/35965017hi.jpg" alt="" \>
-						</div>
-					</div>
-					<div class="item">
-						<div class="image medium ui">
-							<img src="https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/14117898_321827801494590_5587553606325763180_n.jpg?oh=5a61d959da0046c3cb4f4db78893faee&oe=5AD32EBD" alt="" \>
-						</div>
-						<div class="content">
-							<h3>Le BDA</h3>
-							<div class="description">
-								<p>Le BDA est le bureau des arts de l'enib</p>
-								<p>L'association a pour but de favoriser et sensibiliser à l'art et à la création au sein de l'école, et pourquoi pas en s'étendant jusqu'à Brest !</p>
-							</div>
-							<div class="extra">
-								<a href="mailto:cafeteria@enib.fr" class="ui label">
-									<i class="icon mail"></i>bda@enib.fr
-								</a>
-								<a class="ui label" href="https://www.facebook.com/bda.enib/?hc_ref=ARTi_iOG7PzxYYpy1w5halCZiqGEjPLSouv28syLz2DyY6Mm6ESLTVTUMCImlGBOrCU" target="_blank"><i class="icon facebook"></i> BDA</a>
-							</div>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	
 	
 	<!-- Separator doublediagonal -->
 	<section class="ss-style-doublediagonal">
 		<div></div>
 	</section>
+
+	{% endif %}
 
 	<!-- Program section -->
 	<section class="ui vertical stripe segment program">
@@ -300,70 +215,34 @@
 		</div>
 	</section>
 
-
-	<!-- News section -->
-	<section class="ui vertical stripe segment news">
-		<div class="news_container">
-			<div class="news">
-				<h3>Les derniers évènements organisés par les associations</h3>
-				<p class="max">Chaque fois qu'un évènement est organisés, les associations de l'enib crée un évènement sur le site enib.net afin que tous les élèves puissent y participer</p>
-				<div class="news_divider">
-					<div class="new">
-						<div class="new_picture">
-							<img alt="affiche" src="https://img4.hostingpics.net/pics/637118AfficheNoLimitPyj.png" />
-						</div>
-						<div class="new_text">
-							<h4>Soirée Pyjama</h4>
-							<p>
-								Première soirée de l&#39;année scolaire, et donc première soirée pour les nouveaux arrivant ;) Venez découvrir le foyer comme vous ne l&#39;avez jamais vu ! Pendant une soirée tout le bâtiment se transforme en discothèque privée ;)
-								<br/> 
-								Le BDE est prêt à vous recevoir dans la bonne humeur pour qui vous passiez une soirée mémorable !
-								<br />
-								On se retrouve donc Vendredi 10 Novembre au Foyer des Élèves de l&#39;ENIB ( aka Enibar pour les intimes et google maps), 1010 Avenue du Technopôle à Plouzané !
-							</p>
-						</div>
-					</div>
-					<div class="new">
-						<div class="new_picture">
-							<img alt="affiche" src="https://scontent-cdt1-1.xx.fbcdn.net/v/t31.0-8/18076839_1317337768351236_6190572453517130090_o.jpg?oh=5fc4c82b40ead1d1a8fd37182ce1b511&oe=5A8E21C4" />
-						</div>
-						<div class="new_text">
-							<h4>Soiré reverse</h4>
-							<p>
-								Réserve ta soirée le vendredi 12 mai parce que le BDE Elements organise sa deuxième soirée !! De la bonne musique et une ambiance de folie grâce au club Sono de l&#39;école !
-								<br />
-								Le BDE est prêt à vous recevoir dans la bonne humeur pour qui vous passiez une soirée mémorable !
-								<br />
-								On se retrouve donc Vendredi 12 Mai au Foyer des Elèves de l&#39;ENIB ( aka Enibar pour les intimes et google maps), 1010 Avenue du Technopôle à Plouzané !
-							</p>
-						</div>
-					</div>
-					<div class="new">
-						<div class="new_picture">
-							<img alt="affiche" src="http://pix.toile-libre.org/upload/original/1489952135.jpg" />
-						</div>
-						<div class="new_text">
-							<h4>Gala 2017</h4>
-							<p>
-								Le Gala ?
-								Mais c&#39;est quoi ?
-								La soirée qui met à l&#39;honneur nos jeunes diplômés, tout le monde bien habillé, des profs, l&#39;admin, des élèves, des vieux ... Et tout ça autour d&#39;une (ou plusieurs) coupe(s) de champagne ! :) (Ne vous inquiétez pas, il n&#39;y a pas que ça)
-								<br />
-								Mais c&#39;est quand ?
-								Le Samedi 1er Avril ! (Et oui ça arrive bientôt alors ne tarde pas trop)
-								<br />
-								Mais c&#39;est où ?
-								A l&#39;Espace Keraudy de Plougonvelin. Ne t&#39;en fais pas, si tu ne sais pas où c&#39;est, il y aura des navettes qui prendrons et déposerons à Liberté et à l&#39;ENIB afin de vous permettre de venir sans conduire et sans souci.
-								<br />
-								Mais n&#39;y aurait-il pas quelque chose dans l&#39;après-midi ?
-								Bien sûr que si ! Il y a la fameuse remise des diplômes (aka RDD) que Dudu et son équipe vous ont concocté. Ça se passe au cinéma Multiplexe de Brest et c&#39;est l&#39;occasion de féliciter et parfois de découvrir d&#39;une autre manière les futurs anciens enibiens.
-							</p>
-						</div>
+	{% if news %}
+		<!-- News section -->
+		<section class="ui vertical stripe segment news">
+			<div class="news_container">
+				<div class="news">
+					<h3>Les derniers évènements organisés par les associations</h3>
+					<p class="max">Chaque fois qu'un évènement est organisés, les associations de l'enib crée un évènement sur le site enib.net afin que tous les élèves puissent y participer</p>
+					<div class="news_divider">
+						{% for new in news %}
+							<div class="new">
+								{% if new.picture %}
+									<div class="new_picture">
+										<img src="{{ new.picture.url }}" alt="" />
+									</div>
+								{% endif %}
+								<div class="new_text">
+									<h4>{{ new.title}}</h4>
+									<p>
+										{{ new.content|markdown }}
+									</p>
+								</div>
+							</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	{% endif %}
 
 	<!-- footer -->
 	<footer class="ui inverted vertical footer segment contact">
@@ -380,9 +259,6 @@
 		</div>
 	</footer>
 
-	<!-- Script insertion -->
-	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 	<script type="text/javascript" src="{% static 'semantic/dist/semantic.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/homepage.js' %}"></script>
 </body>
 </html>
