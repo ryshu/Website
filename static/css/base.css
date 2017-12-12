@@ -1334,7 +1334,9 @@ table:not(.rd-days) {
       .news footer a:hover {
         color: #68B9DE; }
   .news img {
-    max-width: 100%; }
+    width: 100px;
+    float: left;
+    margin: 0 2em 1em 0; }
 
 .notification {
   margin-bottom: 3em;

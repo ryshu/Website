@@ -42,13 +42,13 @@
                                 <a href="{% url 'news:delete' nid=new.id %}" class="red" title="Supprimer"><i class="fa fa-trash-o"></i></a>
                             {% endif %}
                         </h2>
+                    </header>
+                    <main>
                         {% if new.picture %}
                             <div>
                                 <img src="{{ new.picture.url }}" alt="news-picture" />
                             </div>
                         {% endif %}
-                    </header>
-                    <main>
                         {{ new.content|markdown }}
                     </main>
                     <footer>
