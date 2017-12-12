@@ -3,7 +3,6 @@ from django.contrib.auth.models import  Group
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
-
 class Asso(models.Model):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField(null=True, blank=True)
@@ -12,7 +11,9 @@ class Asso(models.Model):
     admins_group = models.ForeignKey(Group, related_name="asso_admin_set", null=True, blank=True, on_delete=models.PROTECT)
     site = models.URLField(null=True, blank=True)
     picture = models.ImageField(upload_to="asso_pictures", null=True, blank=True)
-
+    homepage_highlight = models.BooleanField(default = False)
+    priority = models.IntegerField(default = 0)
+    
     class Meta:
         permissions = (
             ('manage_asso', 'Can manage associations'),
@@ -36,3 +37,8 @@ def auto_create_groups(sender, instance, **kwargs):
         members_group_name = "asso_members_%s" % instance.name.replace(' ', '_')
         members_group, created = Group.objects.get_or_create(name=members_group_name)
         instance.members_group = members_group
+
+@receiver(pre_save, sender=Asso)
+def auto_fill_priority(sender, instance, **kwargs):
+    if not instance.priority:
+        instance.priority = Asso.objects.order_by('priority').last().priority + 1

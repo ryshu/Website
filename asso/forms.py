@@ -14,13 +14,14 @@ class WrapperClearableinput(forms.widgets.ClearableFileInput):
 class AssoForm(forms.ModelForm):
     class Meta:
         model = Asso
-        fields = ['name', 'description', 'mail', 'site', 'picture']
+        fields = ['name', 'description', 'mail', 'site', 'picture', 'homepage_highlight']
         labels = {
             'name': 'Nom',
             'description': 'Description',
             'mail': 'Email',
             'site': 'Site web',
             'picture': 'Image',
+            'homepage_highlight' : "Afficher sur la page d'accueil",
         }
         widgets = {
             'picture': WrapperClearableinput
@@ -40,4 +41,4 @@ class AssoSettingsForm(forms.ModelForm):
             'admins_group': 'Groupe administrateur',
             'members_group': 'Groupe des members',
         }
-
+        

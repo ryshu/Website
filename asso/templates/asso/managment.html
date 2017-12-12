@@ -29,6 +29,12 @@
                     <td>{{ asso.members_group }}</td>
                     <td>{{ asso.admins_group }}</td>
                     <td class="action_cell">
+                        {% if asso.priority != 1 %}
+                            <a href="{% url 'asso:priority_up' aid=asso.priority %}"><i class="fa fa-arrow-up"></i></a>
+                        {% endif %}
+                        {% if asso.priority != asso_count %}
+                            <a href="{% url 'asso:priority_down' aid=asso.priority %}"><i class="fa fa-arrow-down"></i></a>
+                        {% endif %}
                         <a href="{% url 'asso:details' aid=asso.pk %}"><i class="fa fa-eye"></i></a>
                         <a href="{% url 'asso:edit' aid=asso.pk %}"><i class="fa fa-pencil"></i></a>
                         <a href="{% url 'asso:settings' aid=asso.pk %}"><i class="fa fa-wrench"></i></a>

@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^management$', views.asso_managment, name='managment'),
     url(r'^management/settings/(?P<aid>[0-9]+)$', views.asso_settings, name='settings'),
     url(r'^management/delete/(?P<aid>[0-9]+)$', views.asso_delete, name='delete'),
+    url(r'^management/priority_up/(?P<aid>[0-9]+)$', views.asso_priority_up, name='priority_up'),
+    url(r'^management/priority_down/(?P<aid>[0-9]+)$', views.asso_priority_down, name='priority_down'),
     url(r'^management/create', views.asso_create, name='create'),
 ]
 

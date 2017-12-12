@@ -10,7 +10,7 @@ from . import forms
 
 def index(request):
     context = {
-        'assos': models.Asso.objects.all(),
+        'assos': models.Asso.objects.order_by('priority').all(),
     }
     return render(request, 'asso/index.html', context)
 
@@ -53,10 +53,10 @@ def asso_members(request, aid):
 @permission_required('asso.manage_asso')
 def asso_managment(request):
     context = {
-        'assos': models.Asso.objects.all(),
+        'assos': models.Asso.objects.order_by('priority').all(),
+        'asso_count' : int(models.Asso.objects.count()),
     }
     return render(request, 'asso/managment.html', context)
-
 
 @permission_required('asso.manage_asso')
 def asso_settings(request, aid):
@@ -97,6 +97,39 @@ def asso_create(request):
     }
     return render(request, 'asso/create.html', context)
 
+@permission_required('asso.manage_asso')
+def asso_priority_up(request , aid):
+    asso_1 = get_object_or_404(models.Asso, priority=aid)
+    asso_2 = get_object_or_404(models.Asso , priority=(int(aid)-1))
+
+    tmp = asso_2.priority
+    asso_2.priority = asso_1.priority
+    asso_1.priority = tmp
+    
+    asso_1.save()
+    asso_2.save()
+
+    context = {
+        'assos': models.Asso.objects.order_by('priority').all(),
+    }
+    return render(request, 'asso/managment.html', context)
+
+@permission_required('asso.manage_asso')
+def asso_priority_down(request , aid):
+    asso_1 = get_object_or_404(models.Asso, priority=aid)
+    asso_2 = get_object_or_404(models.Asso , priority=(int(aid)+1))
+
+    tmp = asso_2.priority
+    asso_2.priority = asso_1.priority
+    asso_1.priority = tmp
+    
+    asso_1.save()
+    asso_2.save()
+
+    context = {
+        'assos': models.Asso.objects.order_by('priority').all(),
+    }
+    return render(request, 'asso/managment.html', context)
 
 @login_required
 def asso_edit(request, aid):
