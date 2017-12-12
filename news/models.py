@@ -12,6 +12,8 @@ class News(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
+    picture = models.ImageField(upload_to="news_pictures", null=True, blank=True)
+    homepage_highlight = models.BooleanField(default = False)
 
 
 class Comment(models.Model):

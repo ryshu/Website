@@ -40,7 +40,7 @@ def create(request):
 def edit(request, nid):
     n = get_object_or_404(models.News, id=nid)
     if request.method == "POST":
-        form = forms.NewsForm(request.POST, instance=n)
+        form = forms.NewsForm(request.POST, request.FILES , instance=n)
         if form.is_valid():
             form.save()
             return redirect(reverse('news:index'))
