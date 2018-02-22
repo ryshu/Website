@@ -48,7 +48,7 @@ body {
     margin: 3em 0em; }
 
 .masthead.segment {
-  height: 100vh;
+  height: 100vh !important;
   padding: 1em 0em;
   background-color: transparent !important; }
   .masthead.segment .logo.item img {
