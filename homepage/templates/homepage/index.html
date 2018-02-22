@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{% static 'semantic/dist/semantic.min.css'%}">
-	<title>Enib.net - Le site pour les étudiants de l'enib</title>
+	<title>Enib.net - Le site des étudiants de l'enib</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
 </head>
 <body>
@@ -177,8 +177,6 @@
 									<div class="description">
 										{% if asso.description %}
 											<p>{{ asso.description|markdown }}</p>
-										{% else %}
-											<p> L'association n'a pas rédigé de description</p>
 										{% endif %}
 									</div>
 									<div class="extra">
@@ -221,7 +219,7 @@
 			<div class="news_container">
 				<div class="news">
 					<h3>Les derniers évènements organisés par les associations</h3>
-					<p class="max">Chaque fois qu'un évènement est organisés, les associations de l'enib crée un évènement sur le site enib.net afin que tous les élèves puissent y participer</p>
+					<p class="max">Chaque fois qu'un évènement est organisés, les associations de l'enib créent un évènement sur le site enib.net afin que tous les élèves puissent y participer</p>
 					<div class="news_divider">
 						{% for new in news %}
 							<div class="new">
