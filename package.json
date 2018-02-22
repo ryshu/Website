@@ -1,7 +1,7 @@
 {
   "name": "website_enib",
   "version": "1.0.0",
-  "description": "- A working mysql setup\r - A working redis setup\r - python3.5",
+  "description": "ENIB's students website",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/ryshu/Website.git"
   },
   "author": "Oscar MARIE--TAILLEFER",
-  "license": "MIT",
+  "license": "",
   "bugs": {
     "url": "https://github.com/ryshu/Website/issues"
   },
