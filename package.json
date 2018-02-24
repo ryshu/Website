@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ryshu/Website.git"
+    "url": "git+https://github.com/ENIB/Website.git"
   },
-  "author": "Oscar MARIE--TAILLEFER",
+  "author": "",
   "license": "",
   "bugs": {
-    "url": "https://github.com/ryshu/Website/issues"
+    "url": "https://github.com/ENIB/Website/issues"
   },
-  "homepage": "https://github.com/ryshu/Website#readme",
+  "homepage": "https://github.com/ENIB/Website#readme",
   "dependencies": {
     "gulp": "^3.9.1",
     "semantic-ui": "^2.2.13"
